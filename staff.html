@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e2f0d9;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #a5d6a7;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .staff-photo {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .staff-photo img {
+      max-width: 80%;
+      border-radius: 10px;
+    }
+    .staff-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .staff-card {
+      width: 220px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Notre équipe d’animation 🐺</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="carnet.html">Carnet</a>
+    <a href="calendrier.html">Calendrier</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <p style="text-align: center; max-width: 800px; margin: auto;">
+      Voici la fabuleuse équipe du Rocher ! Toujours motivés pour faire vivre aux Louveteaux une année pleine d’aventures, de jeux et de souvenirs inoubliables.
+    </p>
+
+    <div class="staff-photo">
+      <img src="staff.jpg" alt="Photo de l'équipe">
+    </div>
+
+    <!-- Ligne du haut -->
+    <div class="staff-grid">
+      <div class="staff-card">
+        <h3>Tegumai</h3>
+        <p>Chef 3e année – Criminologie à l’ULB</p>
+      </div>
+      <div class="staff-card">
+        <h3>Akela</h3>
+        <p>Grand Chef – Ingénieur de gestion à LLN</p>
+      </div>
+      <div class="staff-card">
+        <h3>Bagheera</h3>
+        <p>Chef 2e année – Ingénieur de gestion à Saint-Louis</p>
+      </div>
+      <div class="staff-card">
+        <h3>Jacquela</h3>
+        <p>Chef 2e année – Kiné à LLN</p>
+      </div>
+    </div>
+
+    <!-- Ligne du bas -->
+    <div class="staff-grid" style="margin-top: 30px;">
+      <div class="staff-card">
+        <h3>Tabaki</h3>
+        <p>Chef 1ère année – Élève en secondaire</p>
+      </div>
+      <div class="staff-card">
+        <h3>Saüna</h3>
+        <p>Chef 2e année – Ingénieur civil à LLN</p>
+      </div>
+      <div class="staff-card">
+        <h3>Saï</h3>
+        <p>Chef 2e année – Ingénieur de gestion à LLN</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Les Louveteaux du Rocher - Saint-Paul
+  </footer>
+</body>
+</html>
