@@ -182,15 +182,29 @@
     © 2025 Les Louveteaux du Rocher - Saint-Paul
   </footer>
 
+  <script>
+  function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.display = sidebar.style.display === "flex" ? "none" : "flex";
+  }
+</script>
+
 </body>
-<nav style="position: fixed; top: 50%; left: 0; transform: translateY(-50%);
-            background-color: #2e7d32; padding: 20px 10px; border-radius: 0 10px 10px 0;
-            display: flex; flex-direction: column; gap: 15px; z-index: 1000;">
+<!-- BOUTON BURGER -->
+<div id="burger" onclick="toggleMenu()" style="position: fixed; top: 20px; left: 20px; font-size: 28px; cursor: pointer; z-index: 1001;">
+  ☰
+</div>
+
+<!-- MENU CACHÉ -->
+<nav id="sidebar" style="display: none; position: fixed; top: 0; left: 0; height: 100%; width: 200px;
+  background-color: #2e7d32; padding: 60px 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  display: flex; flex-direction: column; gap: 20px; z-index: 1000;">
   <a href="#accueil" style="color: white; text-decoration: none; font-weight: bold;">Accueil</a>
   <a href="#carnet" style="color: white; text-decoration: none; font-weight: bold;">Carnet</a>
   <a href="#calendrier" style="color: white; text-decoration: none; font-weight: bold;">Calendrier</a>
   <a href="#staff" style="color: white; text-decoration: none; font-weight: bold;">Staff</a>
   <a href="#contact" style="color: white; text-decoration: none; font-weight: bold;">Contact</a>
 </nav>
+
 
 </html>
