@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les Louveteaux du Rocher</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2e7d32" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,9 +40,6 @@
       padding: 10px;
     }
   </style>
-
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#2e7d32" />
 </head>
 
 <body>
@@ -64,19 +63,65 @@
   <h2>Bienvenue sur le site du Rocher !</h2>
   <p>Ici, tu retrouveras toutes les infos importantes pour ton année chez les Louveteaux – carnet, calendrier, photos, contacts...</p>
   <p>Utilise le menu ci-dessus pour explorer le site 🌎</p>
+
+  <!-- 🕒 Compteurs -->
+  <div id="compteurs" style="margin-top: 40px; text-align: center; color: #2e7d32;">
+    <h3>⏳ Compte à rebours vers le camp</h3>
+    <p id="compteur-precamp" style="font-size: 18px; font-weight: bold;"></p>
+    <p id="compteur-camp" style="font-size: 18px; font-weight: bold;"></p>
+  </div>
 </main>
 
 <footer>
   © 2025 Les Louveteaux du Rocher - Saint-Paul
 </footer>
 
-<!-- ✅ Script pour service worker -->
+<!-- Service worker (pour appli mobile) -->
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
       .then(reg => console.log("✅ Service worker enregistré"))
       .catch(err => console.error("❌ Erreur d'enregistrement du service worker", err));
   }
+</script>
+
+<!-- Script des compteurs -->
+<script>
+  function formatCountdown(distance) {
+    const jours = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const heures = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secondes = Math.floor((distance % (1000 * 60)) / 1000);
+    return `${jours} j ${heures} h ${minutes} min ${secondes} s`;
+  }
+
+  function mettreAJourCompteurs() {
+    const maintenant = new Date().getTime();
+
+    const datePrecamp = new Date("2025-07-16T15:00:00").getTime();
+    const dateCamp = new Date("2025-07-18T12:30:00").getTime();
+
+    const ecartPrecamp = datePrecamp - maintenant;
+    const ecartCamp = dateCamp - maintenant;
+
+    const precampElt = document.getElementById("compteur-precamp");
+    const campElt = document.getElementById("compteur-camp");
+
+    if (ecartPrecamp > 0) {
+      precampElt.innerHTML = `Pour les sizainiers et seconds : le camp commence dans ${formatCountdown(ecartPrecamp)} ⛺`;
+    } else {
+      precampElt.innerHTML = "Le pré-camp a commencé ! 🎒";
+    }
+
+    if (ecartCamp > 0) {
+      campElt.innerHTML = `Pour le reste de la meute : arrivée dans ${formatCountdown(ecartCamp)} 🐾`;
+    } else {
+      campElt.innerHTML = "Toute la meute est au camp ! 🎉";
+    }
+  }
+
+  setInterval(mettreAJourCompteurs, 1000);
+  mettreAJourCompteurs();
 </script>
 
 </body>
