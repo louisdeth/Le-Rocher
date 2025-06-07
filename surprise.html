@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surprise du Rocher 🎁</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e2f0d9;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 90%;
+      max-width: 560px;
+      height: 315px;
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 Surprise du Rocher !</h1>
+  <p>Une surprise se cache ici… Entre le bon code pour la découvrir !</p>
+
+  <input type="password" id="codeInput" placeholder="Code secret" />
+  <button onclick="verifierCode()">Accéder</button>
+
+  <div id="message"></div>
+
+  <div id="videoSection" class="hidden">
+    <h2 style="color: #2e7d32;">🌟 Bravo, tu as trouvé le code !</h2>
+    <iframe src="https://www.youtube.com/embed/qtlwBof1yFE" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    let essais = 0;
+    const BON_CODE = "Bagheeraleplusbeau";
+
+    function verifierCode() {
+      const code = document.getElementById("codeInput").value;
+      const message = document.getElementById("message");
+
+      if (essais >= 3) {
+        message.innerText = "😢 C’est raté… Tu as dépassé le nombre de tentatives.";
+        return;
+      }
+
+      if (code === BON_CODE) {
+        message.innerText = "";
+        document.getElementById("videoSection").classList.remove("hidden");
+      } else {
+        essais++;
+        if (essais >= 3) {
+          message.innerText = "😢 C’est raté… Tu as dépassé le nombre de tentatives.";
+        } else {
+          message.innerText = `❌ Code incorrect. Tentatives restantes : ${3 - essais}`;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
