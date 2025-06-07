@@ -1,142 +1,146 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff Rocher</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2e7d32">
-  <link rel="icon" type="image/png" href="logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zone Staff Rocher</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2e7d32" />
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #e2f0d9;
       margin: 0;
       padding: 0;
+      background-color: #e2f0d9;
+      text-align: center;
     }
     header {
-      background-image: url('meute.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      background-color: #2e7d32;
       color: white;
-      text-shadow: 2px 2px 4px black;
-      text-align: center;
+      padding: 20px;
     }
     nav {
       background-color: #a5d6a7;
-      padding: 10px 0;
-      text-align: center;
+      padding: 10px;
     }
     nav a {
       margin: 0 15px;
-      color: #2e7d32;
       text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-    .countdown {
-      font-size: 24px;
       color: #2e7d32;
       font-weight: bold;
-      margin-top: 10px;
     }
-    footer {
-      background-color: #2e7d32;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 40px;
+    main {
+      padding: 40px 20px;
     }
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
+    .section {
+      margin: 40px 0;
+    }
+    .locked {
+      display: none;
+    }
+    #countdown {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #2e7d32;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Zone Chefs du Rocher</h1>
-    <p>Bienvenue sur l'espace réservé à l'équipe d'animation</p>
-  </header>
 
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#calendrier">Calendrier</a>
-    <a href="#bouffe">Bouffe</a>
-    <a href="#activites">Activités</a>
-  </nav>
+<header>
+  <h1>Zone Staff Rocher 🛡️</h1>
+  <p>Réservé aux chefs uniquement</p>
+</header>
 
-  <section id="accueil">
-    <h2>Bienvenue les chefs 🐺</h2>
-    <p>Cet espace est réservé aux membres du staff. Vous y trouverez tout ce qu'il faut pour bien préparer le camp.</p>
-  </section>
+<nav>
+  <a href="#calendrier">Calendrier</a>
+  <a href="#bouffe">Planning Bouffe</a>
+  <a href="#activites">Activités</a>
+</nav>
 
-  <section id="calendrier">
-    <h2>Calendrier logistique 🗓️</h2>
-    <p><strong>Départ le 11 juillet à 6h à l'église Saint-Paul</strong></p>
-    <div class="countdown" id="countdown"></div>
-    <ul style="list-style:none; font-size: 18px; padding: 0;">
-      <li>📦 10 juillet – Préparation camion</li>
-      <li>🚌 11 juillet – Départ des chefs à 6h</li>
-      <li>⛺ 16 juillet – Arrivée des sizainiers et seconds</li>
-      <li>🌲 18 juillet – Arrivée de la meute</li>
-      <li>🎉 28 juillet – Fin du camp</li>
-    </ul>
-  </section>
+<main>
+  <div id="auth">
+    <p>🔒 Entrez le mot de passe pour accéder à la zone staff :</p>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button onclick="checkPassword()">Valider</button>
+    <p id="error" style="color: red;"></p>
+  </div>
 
-  <section id="bouffe">
-    <h2>Planning Bouffe 🍽️</h2>
-    <p>Consultez le planning cuisine via le lien ci-dessous :</p>
-    <a href="https://docs.google.com/document/d/1FLUSN1oA7wQjz-planningBouffe" target="_blank">
-      <button style="padding: 10px 20px; font-size: 16px; background-color: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Voir le planning bouffe
-      </button>
-    </a>
-  </section>
+  <div id="content" class="locked">
 
-  <section id="activites">
-    <h2>Planning Activités 🎉</h2>
-    <p>Le document avec les activités prévues :</p>
-    <a href="https://docs.google.com/document/d/1FLUSN1oA7wQjz-planningActivite" target="_blank">
-      <button style="padding: 10px 20px; font-size: 16px; background-color: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Voir le planning activités
-      </button>
-    </a>
-  </section>
+    <div id="countdown"></div>
 
-  <footer>
-    © 2025 Le Rocher – Zone Chefs
-  </footer>
+    <section id="calendrier" class="section">
+      <h2>📅 Calendrier Staff</h2>
+      <p>📍 Rendez-vous à l’église le <strong>11 juillet à 6h du matin</strong> pour le départ du staff.</p>
+    </section>
 
-  <script>
-    const countdownDate = new Date("July 11, 2025 06:00:00").getTime();
-    const countdownElement = document.getElementById("countdown");
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-      if (distance < 0) {
-        countdownElement.innerHTML = "C'est le départ ! ⛺";
-        return;
+    <section id="bouffe" class="section">
+      <h2>🍽️ Planning Bouffe</h2>
+      <a href="https://docs.google.com/document/d/1DqJgC0-zPsYXNBx1-gG0yYRJuWObsDt9a6PxW4EIWQk/edit?hl=fr&tab=t.0" target="_blank">
+        <button style="padding: 10px 20px; background-color: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Voir le document
+        </button>
+      </a>
+    </section>
+
+    <section id="activites" class="section">
+      <h2>📚 Planning Activités</h2>
+      <a href="https://docs.google.com/document/d/1tlcpXoaZSpc2rzSqbIvRXHaDueQ-cu_qf59nnzTmSdc/edit?hl=fr&tab=t.0" target="_blank">
+        <button style="padding: 10px 20px; background-color: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Voir le document
+        </button>
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<script>
+  const PASSWORD = "MadelyneCline";
+  let attempts = 0;
+
+  function checkPassword() {
+    const input = document.getElementById("password").value;
+    const error = document.getElementById("error");
+
+    if (input === PASSWORD) {
+      document.getElementById("auth").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    } else {
+      attempts++;
+      error.textContent = "Mot de passe incorrect.";
+      if (attempts >= 3) {
+        error.textContent = "Trop de tentatives. Accès bloqué.";
+        document.getElementById("password").disabled = true;
       }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.innerHTML = `Départ dans ${days}j ${hours}h ${minutes}m ${seconds}s`;
     }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
+  }
+
+  // Compte à rebours vers le 11 juillet à 6h
+  const targetDate = new Date("2025-07-11T06:00:00").getTime();
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      countdownEl.textContent = "C’est l’heure du camp !";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    countdownEl.textContent = `⏳ J-${days}, ${hours}h${minutes < 10 ? "0" : ""}${minutes}`;
+    setTimeout(updateCountdown, 1000);
+  }
+
+  updateCountdown();
+</script>
+
 </body>
 </html>
