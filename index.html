@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Louveteaux du Rocher</title>
+  <title>Le Rocher</title>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2e7d32" />
   <style>
@@ -45,30 +45,30 @@
 <body>
 
 <header style="background-image: url('meute.jpg'); background-size: cover; background-position: center; height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-shadow: 2px 2px 4px black; text-align: center;">
-  <h1>Bienvenue chez les Louveteaux du Rocher 🐾</h1>
-  <p>Saint-Paul | Unité SCOUT</p>
+  <h1>Bienvenue sur le site du Rocher</h1>
+  <p>Saint-Paul</p>
 </header>
 
 <nav>
   <a href="index.html">Accueil</a>
   <a href="carnet.html">Carnet</a>
-  <a href="calendrier.html">Calendrier</a>
+  <a href="calendrier.html">Agenda</a>
   <a href="checklist.html">Checklist</a>
   <a href="staff.html">Staff</a>
-  <a href="journal.html">Journal</a>
+  <a href="journal.html">Photos</a>
   <a href="contact.html">Contact</a>
   <a href="fiches.html">Fiches</a>
-  <a href="surprise.html">Surprise 🎁</a>
+  <a href="surprise.html">Surprise</a>
 </nav>
 
 <main style="text-align: center; padding: 60px 20px;">
-  <h2>Bienvenue sur le site du Rocher !</h2>
-  <p>Ici, tu retrouveras toutes les infos importantes pour ton année chez les Louveteaux – carnet, calendrier, photos, contacts...</p>
-  <p>Utilise le menu ci-dessus pour explorer le site 🌎</p>
+  <h2>Bienvenue sur le site du Rocher!</h2>
+  <p>Ici, tu retrouveras toutes les infos importantes pour ton année chez les Louveteaux – carnet, Agenda, photos, contacts...</p>
+  <p>Utilise le menu ci-dessus pour explorer le site</p>
 
   <!-- 🕒 Compteurs -->
   <div id="compteurs" style="margin-top: 40px; text-align: center; color: #2e7d32;">
-    <h3>⏳ Compte à rebours vers le camp</h3>
+    <h3>Compte à rebours vers le camp</h3>
     <p id="compteur-precamp" style="font-size: 18px; font-weight: bold;"></p>
     <p id="compteur-camp" style="font-size: 18px; font-weight: bold;"></p>
   </div>
@@ -110,15 +110,15 @@
     const campElt = document.getElementById("compteur-camp");
 
     if (ecartPrecamp > 0) {
-      precampElt.innerHTML = `Pour les sizainiers et seconds : le camp commence dans ${formatCountdown(ecartPrecamp)} ⛺`;
+      precampElt.innerHTML = `Pour les sizainiers et seconds: le camp commence dans ${formatCountdown(ecartPrecamp)}`;
     } else {
-      precampElt.innerHTML = "Le pré-camp a commencé ! 🎒";
+      precampElt.innerHTML = "Le pré-camp a commencé!";
     }
 
     if (ecartCamp > 0) {
-      campElt.innerHTML = `Pour le reste de la meute : arrivée dans ${formatCountdown(ecartCamp)} 🐾`;
+      campElt.innerHTML = `Pour le reste de la meute: arrivée dans ${formatCountdown(ecartCamp)}`;
     } else {
-      campElt.innerHTML = "Toute la meute est au camp ! 🎉";
+      campElt.innerHTML = "Toute la meute est au camp!";
     }
   }
 
