@@ -82,4 +82,15 @@
 
 
 </body>
+<script>
+  const password = "rocherstpaul";
+
+  const userInput = prompt("Veuillez entrer le code d'accès pour voir les photos :");
+
+  if (userInput !== password) {
+    alert("Code incorrect. Redirection vers la page d'accueil.");
+    window.location.href = "index.html"; // ou une autre page de ton choix
+  }
+</script>
+
 </html>
